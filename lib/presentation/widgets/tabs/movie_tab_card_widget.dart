@@ -28,107 +28,103 @@ class MovieTabCardWidget extends StatelessWidget {
         Modular.to
             .pushNamed('./detail', arguments: MovieDetailArguments(movieId));
       },
-      child: Column(
+      child: Row(
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 0,
-                  top: 15,
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 0,
+              top: 15,
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(11),
+              // ignore: sized_box_for_whitespace
+              child: Image.network(
+                ApiUrls.requestImage(
+                  posterPath,
                 ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(11),
-                  // ignore: sized_box_for_whitespace
-                  child: Container(
-                    height: 200,
-                    child: Image.network(
-                      ApiUrls.requestImage(
-                        posterPath,
+                height: 150,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Flexible(
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                  bottomRight: Radius.circular(11),
+                  topRight: Radius.circular(11)),
+              child: Container(
+                height: 150,
+                
+                color: const Color(0xFF1C1C1F),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                        top: 10,
                       ),
-                      fit: BoxFit.cover,
+                      child: Text(
+                        title,
+                        maxLines: 3,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
-                  ),
+                    Row(
+                      children: [
+                        RatingBar.builder(
+                          unratedColor: const Color(0xFF383536),
+                          ignoreGestures: true,
+                          itemSize: 18,
+                          initialRating: voteAverage / 2,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemPadding: const EdgeInsets.only(left: 10),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          onRatingUpdate: (rating) {
+                            //print(rating);
+                          },
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 8, top: 5, bottom: 5),
+                          child: Text(
+                            voteAverage.toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                      child: Text(
+                        DateFormat('y').format(
+                          DateTime.parse(
+                            releaseDate,
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(11),
-                    topRight: Radius.circular(11)),
-                child: Container(
-                  height: 150,
-                  width: 240,
-                  color: const Color(0xFF1C1C1F),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10,
-                          top: 10,
-                        ),
-                        child: Text(
-                          title,
-                          maxLines: 3,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          RatingBar.builder(
-                            unratedColor: const Color(0xFF383536),
-                            ignoreGestures: true,
-                            itemSize: 18,
-                            initialRating: voteAverage / 2,
-                            minRating: 1,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemPadding: const EdgeInsets.only(left: 10),
-                            itemBuilder: (context, _) => const Icon(
-                              Icons.star,
-                              color: Colors.amber,
-                            ),
-                            onRatingUpdate: (rating) {
-                              //print(rating);
-                            },
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 5, bottom: 5),
-                            child: Text(
-                              voteAverage.toString(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                        child: Text(
-                          DateFormat('y').format(
-                            DateTime.parse(
-                              releaseDate,
-                            ),
-                          ),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       ),

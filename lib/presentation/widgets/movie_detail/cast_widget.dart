@@ -29,47 +29,55 @@ class CastWidget extends StatelessWidget {
                 itemCount: state.casts.length,
                 itemBuilder: (context, index) {
                   final castEntity = state.casts[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 11),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.white,
-                          radius: 60,
-                          child: CircleAvatar(
-                            foregroundColor: Colors.white,
-                            radius: 55,
-                            backgroundImage: castEntity.posterPath == null || castEntity.posterPath!.isEmpty
-                                ? const NetworkImage('https://www.helptechco.com/files/1215BP6.png')
-                                : NetworkImage(
-                                    ApiUrls.requestImage(
-                                      castEntity.posterPath!,
+                  return GestureDetector(
+                    onTap: (){
+                      Modular.to.pushNamed(
+                        './person',
+                        arguments: castEntity.id,
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 11),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.white,
+                            radius: 60,
+                            child: CircleAvatar(
+                              foregroundColor: Colors.white,
+                              radius: 55,
+                              backgroundImage: castEntity.posterPath == null || castEntity.posterPath!.isEmpty
+                                  ? const NetworkImage('https://www.helptechco.com/files/1215BP6.png')
+                                  : NetworkImage(
+                                      ApiUrls.requestImage(
+                                        castEntity.posterPath!,
+                                      ),
                                     ),
-                                  ),
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(11.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Container(
-                              color: const Color(0xFF221029),
-                              height: 50,
-                              width: 100,
-                              child: Text(
-                                castEntity.name,
-                                textAlign: TextAlign.center,
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
+                          Padding(
+                            padding: const EdgeInsets.all(11.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Container(
+                                color: const Color(0xFF221029),
+                                height: 50,
+                                width: 100,
+                                child: Text(
+                                  castEntity.name,
+                                  textAlign: TextAlign.center,
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   );
                 },

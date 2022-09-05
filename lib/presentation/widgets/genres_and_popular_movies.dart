@@ -9,6 +9,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:app_example/core/utils/string_extension_greater_15.dart';
 
+import '../../data/models/genre_model.dart';
+
 class TabGenresWidget extends StatefulWidget {
   const TabGenresWidget({Key? key}) : super(key: key);
 
@@ -69,75 +71,83 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                 );
               } else if (state is GenreLoaded) {
                 List<GenreEntity> genres = state.genreList;
-                return SizedBox(
-                  height: 60,
-                  child: ListView.separated(
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const VerticalDivider(
-                      color: Colors.transparent,
-                      width: 5,
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    SizedBox(
+                      height: 60,
+                      child: ListView.separated(
+                        separatorBuilder: (BuildContext context, int index) =>
+                            const VerticalDivider(
+                          color: Colors.transparent,
+                          width: 5,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        itemCount: genres.length,
+                        itemBuilder: (context, index) {
+                          GenreEntity genre = genres[index];
+                          return Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    GenreEntity genre = genres[index];
+                                    selectedGenre = genre.id;
+                                    moviesBloc.add((GetMovieByGenreEvent(
+                                      selectedGenre,
+                                      '',
+                                    )));
+                                  });
+                                },
+                                child: Container(
+                                  margin: const EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.all(10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: ThemeColors.deepBlack,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: (genre.id == selectedGenre)
+                                        ? ThemeColors.red
+                                        : const Color(0xFF333338),
+                                  ),
+                                  child: Text(
+                                    genre.genreName,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      color: (genre.id == selectedGenre)
+                                          ? Colors.white
+                                          : Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: genres.length,
-                    itemBuilder: (context, index) {
-                      GenreEntity genre = genres[index];
-                      return Column(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                GenreEntity genre = genres[index];
-                                selectedGenre = genre.id;
-                                moviesBloc.add((GetMovieByGenreEvent(
-                                  selectedGenre,
-                                  '',
-                                )));
-                              });
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(top: 10),
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: ThemeColors.deepBlack,
-                                ),
-                                borderRadius: BorderRadius.circular(10),
-                                color: (genre.id == selectedGenre)
-                                    ? ThemeColors.red
-                                    : const Color(0xFF333338),
-                              ),
-                              child: Text(
-                                genre.genreName,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: (genre.id == selectedGenre)
-                                      ? Colors.white
-                                      : Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      genres
+                          .firstWhere((element) => element.id == selectedGenre,
+                              orElse: () => const Genre(id: 1, name: "Popular"))
+                          .genreName,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 );
               } else {
                 return Container();
               }
             },
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'Popular',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
           ),
           const SizedBox(
             height: 20,
@@ -231,7 +241,8 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 5),
                                     child: Text(
-                                      state.movies[index].voteAverage.toString(),
+                                      state.movies[index].voteAverage
+                                          .toString(),
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 16,
