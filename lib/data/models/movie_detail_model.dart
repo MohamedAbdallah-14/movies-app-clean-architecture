@@ -26,10 +26,10 @@ class MovieDetailModel extends MovieDetailEntity {
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-     this.posterPath,
+    this.posterPath,
     required this.productionCompanies,
     required this.productionCountries,
-     this.releaseDate,
+    this.releaseDate,
     required this.revenue,
     required this.runtime,
     required this.spokenLanguages,
@@ -124,7 +124,9 @@ class MovieDetailModel extends MovieDetailEntity {
         backdropPath: json["backdrop_path"] ?? '',
         belongsToCollection: json["belongs_to_collection"] ?? '',
         budget: json["budget"] ?? 0,
-        genres: List<Genre>.from(json["genres"] ?? [].map((x) => Genre.fromMap(x))),
+        genres: ((json["genres"] ?? []) as List)
+            .map((x) => Genre.fromMap(x))
+            .toList(),
         homepage: json["homepage"] ?? '',
         id: json["id"] ?? 1,
         imdbId: json["imdb_id"] ?? '',
@@ -134,16 +136,17 @@ class MovieDetailModel extends MovieDetailEntity {
         popularity: json["popularity"] ?? 0.0,
         posterPath: json["poster_path"],
         productionCompanies: List<ProductionCompany>.from(
-            json["production_companies"]
-                ?? [].map((x) => ProductionCompany.fromMap(x))),
+            (json["production_companies"] ?? [])
+                .map((x) => ProductionCompany.fromMap(x))),
         productionCountries: List<ProductionCountry>.from(
-            json["production_countries"] ?? []
+            (json["production_countries"] ?? [])
                 .map((x) => ProductionCountry.fromMap(x))),
-        releaseDate: json["release_date"] ?? '', 
+        releaseDate: json["release_date"] ?? '',
         revenue: json["revenue"] ?? 0,
         runtime: json["runtime"] ?? 0,
         spokenLanguages: List<SpokenLanguage>.from(
-            json["spoken_languages"] ?? [].map((x) => SpokenLanguage.fromMap(x))),
+            (json["spoken_languages"] ?? [])
+                .map((x) => SpokenLanguage.fromMap(x))),
         status: json["status"] ?? '',
         tagline: json["tagline"] ?? '',
         title: json["title"] ?? '',
