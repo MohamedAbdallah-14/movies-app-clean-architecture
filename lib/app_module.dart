@@ -52,11 +52,11 @@ class AppModule extends Module {
               BaseOptions(
                 baseUrl: "https://api.themoviedb.org/3",
                 headers: {
-                  'api-key': 'dd5b273e783e966d89f5607f8bc77f15',
+                  'api-key': '',
                   'contentType': 'application/json; charset=utf-8',
                   'language': 'en-US',
                   'authorization':
-                      'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDViMjczZTc4M2U5NjZkODlmNTYwN2Y4YmM3N2YxNSIsInN1YiI6IjU4YTg4OTFmOTI1MTQxMGEwZTAwMDNmMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.iMXzzKdV0FfNnuZ8Ou1N6goHZb8ZJDgb5e9ESkhr10U'
+                      'Bearer '
                 },
               ),
             )),
