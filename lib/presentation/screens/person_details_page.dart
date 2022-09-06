@@ -131,17 +131,21 @@ class _PersonDetailsPageState extends State<PersonDetailsPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    state.personEntity.name,
-                    style: const TextStyle(
-                        color: Colors.white, fontSize: 24, fontWeight: FontWeight
-                        .bold),
+                  Flexible(
+                    child: Text(
+                      state.personEntity.name,
+                      style: const TextStyle(
+                          color: Colors.white, fontSize: 24, fontWeight: FontWeight
+                          .bold),
+                    ),
                   ),
-                  Text(
-                    state.personEntity.birthday,
-                    style: const TextStyle(
-                        color: Colors.orange, fontSize: 16, fontWeight: FontWeight
-                        .bold),
+                  Flexible(
+                    child: Text(
+                      state.personEntity.birthday,
+                      style: const TextStyle(
+                          color: Colors.orange, fontSize: 16, fontWeight: FontWeight
+                          .bold),
+                    ),
                   ),
                 ],
               ),
