@@ -24,7 +24,7 @@ class TabBarMoviesState extends State<TabBarMovies> {
             indicatorWeight: 6,
             indicatorColor: ThemeColors.red,
             labelStyle: const TextStyle(
-              fontSize: 18,
+              fontSize: 16,
             ),
             tabs: [
               Padding(

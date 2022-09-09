@@ -4,6 +4,7 @@ import 'package:app_example/core/utils/api_utils.dart';
 import 'package:app_example/data/models/cast_crew_result_model.dart';
 import 'package:app_example/data/models/movie_detail_model.dart';
 import 'package:app_example/data/models/movie_results_model.dart';
+import 'package:app_example/data/models/person_image_model.dart';
 import 'package:app_example/data/models/video_result_model.dart';
 import 'package:dio/dio.dart';
 
@@ -18,6 +19,8 @@ abstract class IMovieRemoteDataSource {
   Future<CastCrewResultModel> getCastCrew(int id);
   Future<VideoResultModel> getVideos(int id);
   Future<MovieResultsModel> getSearchedMovies(String searchText);
+  Future<PersonImageModel> getPersonImage(int id);
+
 }
 
 class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
@@ -142,6 +145,18 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
     final movies = MovieResultsModel.fromJson(response.toString());
     if (response.statusCode == 200) {
       return movies;
+    } else {
+      throw const ServerException('Something went wrong!');
+    }
+  }
+  
+  @override
+  Future<PersonImageModel> getPersonImage(int id)async {
+      Response response = await client.get(ApiUrls.actorImages(id));
+    final personImage = PersonImageModel.fromMap(response.data);
+    //print(cast.cast[0].castId);
+    if (response.statusCode == 200) {
+      return personImage;
     } else {
       throw const ServerException('Something went wrong!');
     }

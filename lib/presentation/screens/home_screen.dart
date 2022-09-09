@@ -7,7 +7,7 @@ import '../widgets/genres_and_popular_movies.dart';
 import '../widgets/now_playing_movies_listview.dart';
 import '../widgets/tabs/tabbar_movies.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget { 
   const HomeScreen({Key? key}) : super(key: key);
 
   @override

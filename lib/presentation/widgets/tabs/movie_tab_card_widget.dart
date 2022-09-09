@@ -28,8 +28,7 @@ class MovieTabCardWidget extends StatelessWidget {
         Modular.to
             .pushNamed('./detail', arguments: MovieDetailArguments(movieId));
       },
-      child: Column(
-        children: [
+      child: 
           Row(
             children: [
               Padding(
@@ -51,87 +50,89 @@ class MovieTabCardWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    bottomRight: Radius.circular(11),
-                    topRight: Radius.circular(11)),
-                child: Container(
-                  height: 150,
-                  width: 240,
-                  color: const Color(0xFF1C1C1F),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10,
-                          top: 10,
-                        ),
-                        child: Text(
-                          title,
-                          maxLines: 3,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
+              Expanded(
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      bottomRight: Radius.circular(11),
+                      topRight: Radius.circular(11)),
+                  child: Container(
+                    height: 150,
+                    width: 240,
+                    color: const Color(0xFF1C1C1F),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 10,
+                            top: 10,
                           ),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          RatingBar.builder(
-                            unratedColor: const Color(0xFF383536),
-                            ignoreGestures: true,
-                            itemSize: 18,
-                            initialRating: voteAverage / 2,
-                            minRating: 1,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            itemCount: 5,
-                            itemPadding: const EdgeInsets.only(left: 10),
-                            itemBuilder: (context, _) => const Icon(
-                              Icons.star,
-                              color: Colors.amber,
+                          child: Text(
+                            title,
+                            maxLines: 2,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
                             ),
-                            onRatingUpdate: (rating) {
-                              //print(rating);
-                            },
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 8, top: 5, bottom: 5),
-                            child: Text(
-                              voteAverage.toString(),
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
+                        ),
+                        Row(
+                          children: [
+                            RatingBar.builder(
+                              unratedColor: const Color(0xFF383536),
+                              ignoreGestures: true,
+                              itemSize: 18,
+                              initialRating: voteAverage / 2,
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding: const EdgeInsets.only(left: 10),
+                              itemBuilder: (context, _) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {
+                                //print(rating);
+                              },
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8, top: 5, bottom: 5),
+                              child: Text(
+                                voteAverage.toString(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 10, top: 5, bottom: 5),
-                        child: Text(
-                          DateFormat('y').format(
-                            DateTime.parse(
-                              releaseDate,
+                          ],
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                          child: Text(
+                            DateFormat('y').format(
+                              DateTime.parse(
+                                releaseDate,
+                              ),
+                            ),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
                             ),
                           ),
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
             ],
           ),
-        ],
-      ),
+     
     );
   }
 }
