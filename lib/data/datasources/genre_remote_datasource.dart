@@ -16,6 +16,7 @@ class GenreRemoteDatasourceImplementation extends IGenreRemoteDataSource {
   @override
   Future<GenreModel> getAllGenres() async {
     Response response = await client.get(ApiUrls.movieGenres());
+    //print(response.data.runtimeType);
     final genresList = GenreModel.fromMap(response.data);
     //print(genresList.genres);
     if (response.statusCode == 200) {

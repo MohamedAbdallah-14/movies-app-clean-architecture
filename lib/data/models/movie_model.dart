@@ -14,7 +14,7 @@ class MovieModel extends MovieEntity {
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-     this.posterPath,
+    this.posterPath,
     required this.releaseDate,
     required this.title,
     required this.video,
@@ -48,15 +48,14 @@ class MovieModel extends MovieEntity {
   final double voteAverage;
   final int voteCount;
 
-  factory MovieModel.fromJson(String str) =>
-      MovieModel.fromMap(json.decode(str));
+  factory MovieModel.fromJson(String str) => MovieModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
   factory MovieModel.fromMap(Map<String, dynamic> json) => MovieModel(
         adult: json["adult"],
         backdropPath: json["backdrop_path"] ?? '',
-        genreId: List<int>.from(json["genre_ids"].map((x) => x)),
+        genreId: json["genre_ids"] == null ? [] : List<int>.from(json["genre_ids"]!.map((x) => x)),
         id: json["id"] ?? 297761,
         originalLanguage: json["original_language"] ?? 'en',
         originalTitle: json["original_title"] ?? '',

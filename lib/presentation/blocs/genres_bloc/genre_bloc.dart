@@ -10,7 +10,7 @@ part 'genre_state.dart';
 class GenreBloc extends Bloc<GenreEvent, GenreState> {
   final GetAllGenresUsecase allGenresusecase;
 
-  GenreBloc(this.allGenresusecase) : super(const GenreInitial()) {
+  GenreBloc(this.allGenresusecase) : super(GenreInitial()) {
     on<GenreTapEventStarted>(getAllGenres);
   }
 

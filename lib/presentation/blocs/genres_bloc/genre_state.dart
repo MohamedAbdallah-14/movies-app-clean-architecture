@@ -8,10 +8,10 @@ abstract class GenreState extends Equatable {
 }
 
 class GenreInitial extends GenreState {
-  const GenreInitial();
-
-  @override
-  List<Object> get props => [];
+  // const GenreInitial();
+  //
+  // @override
+  // List<Object> get props => [];
 }
 
 class GenreLoading extends GenreState {

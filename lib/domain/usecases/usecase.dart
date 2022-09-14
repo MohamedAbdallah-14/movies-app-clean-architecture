@@ -13,6 +13,14 @@ abstract class MovieDetailUseCase<Output, Input> {
   Future<Either<Failure, Output>> call(Input params);
 }
 
+abstract class CastImageUseCase<Output, Input> {
+  Future<Either<Failure, Output>> call(Input params);
+}
+
+abstract class ActorDetailsUseCase<Output, Input> {
+  Future<Either<Failure, Output>> call(Input params);
+}
+
 abstract class PopularMovieByGenreUseCase<Output, Input> {
   Future<Either<Failure, List<Output>>> call(int param, int params);
 }

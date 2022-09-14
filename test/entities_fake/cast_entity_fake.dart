@@ -4,4 +4,5 @@ const castEntity = CastEntity(
   name: 'Flutter',
   creditId: 'ipsemId',
   character: 'Chris Evans',
+  id: 123,
 );

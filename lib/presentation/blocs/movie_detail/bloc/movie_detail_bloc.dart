@@ -13,8 +13,11 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
   final CastBloc castBloc;
   final VideosBloc videosBloc;
 
-  MovieDetailBloc(this.movieDetailUsecase, this.castBloc, this.videosBloc)
-      : super(MovieDetailInitial()) {
+  MovieDetailBloc(
+    this.movieDetailUsecase,
+    this.castBloc,
+    this.videosBloc,
+  ) : super(MovieDetailInitial()) {
     on<MovieDetailLoadEvent>(getMovieDetail);
   }
 

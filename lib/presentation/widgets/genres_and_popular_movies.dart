@@ -1,3 +1,4 @@
+import 'package:app_example/core/utils/string_extension_greater_15.dart';
 import 'package:app_example/domain/entitites.dart/genre_entity.dart';
 import 'package:app_example/presentation/blocs/genres_bloc/genre_bloc.dart';
 import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
@@ -7,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:app_example/core/utils/string_extension_greater_15.dart';
 
 class TabGenresWidget extends StatefulWidget {
   const TabGenresWidget({Key? key}) : super(key: key);
@@ -72,8 +72,7 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                 return SizedBox(
                   height: 60,
                   child: ListView.separated(
-                    separatorBuilder: (BuildContext context, int index) =>
-                        const VerticalDivider(
+                    separatorBuilder: (BuildContext context, int index) => const VerticalDivider(
                       color: Colors.transparent,
                       width: 5,
                     ),
@@ -102,18 +101,14 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                                   color: ThemeColors.deepBlack,
                                 ),
                                 borderRadius: BorderRadius.circular(10),
-                                color: (genre.id == selectedGenre)
-                                    ? ThemeColors.red
-                                    : const Color(0xFF333338),
+                                color: (genre.id == selectedGenre) ? ThemeColors.red : const Color(0xFF333338),
                               ),
                               child: Text(
                                 genre.genreName,
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,
-                                  color: (genre.id == selectedGenre)
-                                      ? Colors.white
-                                      : Colors.white,
+                                  color: (genre.id == selectedGenre) ? Colors.white : Colors.white,
                                 ),
                               ),
                             ),
@@ -177,8 +172,7 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                                   child: SizedBox(
                                     child: MovieCardWidget(
                                       movieId: state.movies[index].id!,
-                                      posterPath:
-                                          state.movies[index].posterPath!,
+                                      posterPath: state.movies[index].posterPath!,
                                     ),
                                   ),
                                 ),
@@ -212,14 +206,12 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                                     unratedColor: const Color(0xFF383536),
                                     ignoreGestures: true,
                                     itemSize: 18,
-                                    initialRating:
-                                        state.movies[index].voteAverage / 2,
+                                    initialRating: state.movies[index].voteAverage / 2,
                                     minRating: 1,
                                     direction: Axis.horizontal,
                                     allowHalfRating: true,
                                     itemCount: 5,
-                                    itemPadding: const EdgeInsets.symmetric(
-                                        horizontal: 4.0),
+                                    itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                                     itemBuilder: (context, _) => const Icon(
                                       Icons.star,
                                       color: Colors.amber,

@@ -5,7 +5,7 @@ import 'package:app_example/domain/entitites.dart/movie_entity.dart';
 import 'movie_model.dart';
 
 class MovieResultsModel extends MovieEntity {
-   MovieResultsModel({
+  MovieResultsModel({
     required this.page,
     required this.results,
     required this.totalPages,
@@ -28,16 +28,13 @@ class MovieResultsModel extends MovieEntity {
   final int totalPages;
   final int totalResults;
 
-  factory MovieResultsModel.fromJson(String str) =>
-      MovieResultsModel.fromMap(json.decode(str));
+  factory MovieResultsModel.fromJson(String str) => MovieResultsModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory MovieResultsModel.fromMap(Map<String, dynamic> json) =>
-      MovieResultsModel(
+  factory MovieResultsModel.fromMap(Map<String, dynamic> json) => MovieResultsModel(
         page: json["page"] ?? 1,
-        results: List<MovieModel>.from(
-            json["results"].map((x) => MovieModel.fromMap(x))),
+        results: json["results"] == null ? [] : List<MovieModel>.from(json["results"].map((x) => MovieModel.fromMap(x))),
         totalPages: json["total_pages"] ?? 10,
         totalResults: json["total_results"] ?? 10,
       );

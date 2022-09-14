@@ -9,12 +9,10 @@ class UpcomingSoonMoviesListView extends StatefulWidget {
   const UpcomingSoonMoviesListView({Key? key}) : super(key: key);
 
   @override
-  State<UpcomingSoonMoviesListView> createState() =>
-      _UpcomingSoonMoviesListViewState();
+  State<UpcomingSoonMoviesListView> createState() => _UpcomingSoonMoviesListViewState();
 }
 
-class _UpcomingSoonMoviesListViewState
-    extends State<UpcomingSoonMoviesListView> {
+class _UpcomingSoonMoviesListViewState extends State<UpcomingSoonMoviesListView> {
   final List<MovieEntity> _movies = [];
   final ScrollController _scrollController = ScrollController();
 
@@ -42,8 +40,7 @@ class _UpcomingSoonMoviesListViewState
         create: (context) => bloc,
         child: BlocBuilder<MoviesBloc, MoviesState>(
           builder: (context, state) {
-            if (state is MoviesInitial ||
-                state is MoviesLoading && _movies.isEmpty) {
+            if (state is MoviesInitial || state is MoviesLoading && _movies.isEmpty) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is MoviesLoaded) {
               _movies.addAll(state.movies);
@@ -71,7 +68,6 @@ class _UpcomingSoonMoviesListViewState
                     releaseDate: movie.releaseDate,
                   );
                 }
-                
               },
             );
           },

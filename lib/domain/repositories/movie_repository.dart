@@ -1,5 +1,7 @@
 import 'package:app_example/core/errors/failure.dart';
+import 'package:app_example/domain/entitites.dart/actor_details_entity.dart';
 import 'package:app_example/domain/entitites.dart/cast_entity.dart';
+import 'package:app_example/domain/entitites.dart/cast_images_entity.dart';
 import 'package:app_example/domain/entitites.dart/movie_detail_entity.dart';
 import 'package:app_example/domain/entitites.dart/movie_entity.dart';
 import 'package:app_example/domain/entitites.dart/video_entity.dart';
@@ -16,4 +18,6 @@ abstract class IMovieRepository {
   Future<Either<Failure, List<CastEntity>>> getCastCrew(int id);
   Future<Either<Failure, List<VideoEntity>>> getVideos(int id);
   Future<Either<Failure, List<MovieEntity>>> getSearchedMovies(String searchText);
+  Future<Either<Failure, CastImageEntity>> getCastImages(int personID);
+  Future<Either<Failure, ActorDetailsEntity>> getActorDetails(int personID);
 }

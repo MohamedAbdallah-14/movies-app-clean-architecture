@@ -15,6 +15,7 @@ class CastBloc extends Bloc<CastEvent, CastState> {
 
   Future<void> getCast(event, emit) async {
     var getCastCrew = await getCastUsecase.call(event.movieId);
+    //print('getCast in cast blboc : ${getCastCrew}');
     getCastCrew.fold(
       (failure) => emit(const CastError('Something went wrong!')),
       (success) => emit(
