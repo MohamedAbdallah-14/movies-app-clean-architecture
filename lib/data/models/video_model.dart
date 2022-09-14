@@ -34,16 +34,16 @@ class VideoModel extends VideoEntity {
 
   factory VideoModel.fromJson(Map<String, dynamic> json) {
     return VideoModel(
-        iso_639_1: json['iso_639_1'],
+        iso_639_1: json['iso_639_1'] ?? '',
         iso_3166_1: json['iso_3166iso_3166_1'] ?? '',
-        name: json['name'],
+        name: json['name'] ?? '',
         key: json['key'] ?? 'PnJY20UCH9c',
-        site: json['site'],
-        size: json['size'],
-        type: json['type'],
-        official: json['official'],
-        publishedAt: json['published_at'],
-        id: json['id']);
+        site: json['site'] ?? '',
+        size: json['size'] ?? 0,
+        type: json['type'] ?? '',
+        official: json['official'] ?? true,
+        publishedAt: json['published_at'] ?? '',
+        id: json['id'] ?? '');
   }
 
   Map<String, dynamic> toJson() {

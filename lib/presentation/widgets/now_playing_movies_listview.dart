@@ -1,12 +1,11 @@
+import 'package:app_example/core/utils/string_extension_greater_20.dart';
 import 'package:app_example/domain/entitites.dart/movie_entity.dart';
 import 'package:app_example/presentation/blocs/cubit/animation/animation_cubit.dart';
 import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
 import 'package:app_example/presentation/widgets/movie_card_widget.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:app_example/core/utils/string_extension_greater_20.dart';
 
 class NowPlayingMoviesScreen extends StatefulWidget {
   const NowPlayingMoviesScreen({Key? key}) : super(key: key);
@@ -49,8 +48,7 @@ class _HomePageState extends State<NowPlayingMoviesScreen> {
       child: Scaffold(
         body: BlocBuilder<MoviesBloc, MoviesState>(
           builder: (context, state) {
-            if (state is MoviesInitial ||
-                state is MoviesLoading && _listMovies.isEmpty) {
+            if (state is MoviesInitial || state is MoviesLoading && _listMovies.isEmpty) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is MoviesLoaded) {
               _listMovies.addAll(state.movies);
@@ -133,9 +131,7 @@ class _HomePageState extends State<NowPlayingMoviesScreen> {
                       });
                     },
                     child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(5),
-                          bottomRight: Radius.circular(5)),
+                      borderRadius: const BorderRadius.only(topRight: Radius.circular(5), bottomRight: Radius.circular(5)),
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 500),
                         height: cubit.nowPlayingAnimation ? 40 : 40,
@@ -153,9 +149,7 @@ class _HomePageState extends State<NowPlayingMoviesScreen> {
                             ),
                           ),
                           secondChild: Container(),
-                          crossFadeState: cubit.nowPlayingAnimation
-                              ? CrossFadeState.showFirst
-                              : CrossFadeState.showSecond,
+                          crossFadeState: cubit.nowPlayingAnimation ? CrossFadeState.showFirst : CrossFadeState.showSecond,
                           duration: const Duration(milliseconds: 100),
                         ),
                       ),

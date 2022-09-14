@@ -6,11 +6,9 @@ import 'package:app_example/data/models/genre_model.dart';
 import 'package:app_example/domain/entitites.dart/movie_detail_entity.dart';
 import 'package:flutter/foundation.dart';
 
-MovieDetailModel movieDetailModelFromMap(String str) =>
-    MovieDetailModel.fromMap(json.decode(str));
+MovieDetailModel movieDetailModelFromMap(String str) => MovieDetailModel.fromMap(json.decode(str));
 
-String movieDetailModelToMap(MovieDetailModel data) =>
-    json.encode(data.toMap());
+String movieDetailModelToMap(MovieDetailModel data) => json.encode(data.toMap());
 
 class MovieDetailModel extends MovieDetailEntity {
   MovieDetailModel({
@@ -26,10 +24,10 @@ class MovieDetailModel extends MovieDetailEntity {
     required this.originalTitle,
     required this.overview,
     required this.popularity,
-     this.posterPath,
+    this.posterPath,
     required this.productionCompanies,
     required this.productionCountries,
-     this.releaseDate,
+    this.releaseDate,
     required this.revenue,
     required this.runtime,
     required this.spokenLanguages,
@@ -69,62 +67,85 @@ class MovieDetailModel extends MovieDetailEntity {
 
   // ignore: overridden_fields
   final bool adult;
+
   // ignore: overridden_fields
   final String backdropPath;
+
   // ignore: overridden_fields
   final dynamic belongsToCollection;
+
   // ignore: overridden_fields
   final int budget;
+
   // ignore: overridden_fields
   final List<Genre> genres;
+
   // ignore: overridden_fields
   final String homepage;
+
   // ignore: overridden_fields
   final int id;
+
   // ignore: overridden_fields
   final String imdbId;
+
   // ignore: overridden_fields
   final String originalLanguage;
+
   // ignore: overridden_fields
   final String originalTitle;
+
   // ignore: overridden_fields
   final String overview;
+
   // ignore: overridden_fields
   final double popularity;
+
   // ignore: overridden_fields
   final String? posterPath;
+
   // ignore: overridden_fields
   final List<ProductionCompany> productionCompanies;
+
   // ignore: overridden_fields
   final List<ProductionCountry> productionCountries;
+
   // ignore: overridden_fields
   final String? releaseDate;
+
   // ignore: overridden_fields
   final int revenue;
+
   // ignore: overridden_fields
   final int runtime;
+
   // ignore: overridden_fields
   final List<SpokenLanguage> spokenLanguages;
+
   // ignore: overridden_fields
   final String status;
+
   // ignore: overridden_fields
   final String tagline;
+
   // ignore: overridden_fields
   final String title;
+
   // ignore: overridden_fields
   final bool video;
+
   // ignore: overridden_fields
   final double voteAverage;
+
   // ignore: overridden_fields
   final int voteCount;
 
-  factory MovieDetailModel.fromMap(Map<String, dynamic> json) =>
-      MovieDetailModel(
+  factory MovieDetailModel.fromMap(Map<String, dynamic> json) => MovieDetailModel(
         adult: json["adult"] ?? false,
         backdropPath: json["backdrop_path"] ?? '',
         belongsToCollection: json["belongs_to_collection"] ?? '',
         budget: json["budget"] ?? 0,
-        genres: List<Genre>.from(json["genres"] ?? [].map((x) => Genre.fromMap(x))),
+        genres: json["genres"] == null ? [] : List<Genre>.from(json["genres"].map((x) => Genre.fromMap(x))),
         homepage: json["homepage"] ?? '',
         id: json["id"] ?? 1,
         imdbId: json["imdb_id"] ?? '',
@@ -133,17 +154,17 @@ class MovieDetailModel extends MovieDetailEntity {
         overview: json["overview"] ?? '',
         popularity: json["popularity"] ?? 0.0,
         posterPath: json["poster_path"],
-        productionCompanies: List<ProductionCompany>.from(
-            json["production_companies"]
-                ?? [].map((x) => ProductionCompany.fromMap(x))),
-        productionCountries: List<ProductionCountry>.from(
-            json["production_countries"] ?? []
-                .map((x) => ProductionCountry.fromMap(x))),
-        releaseDate: json["release_date"] ?? '', 
+        productionCompanies: json["production_companies"] == null
+            ? []
+            : List<ProductionCompany>.from(json["production_companies"].map((x) => ProductionCompany.fromMap(x))),
+        productionCountries: json["production_countries"] == null
+            ? []
+            : List<ProductionCountry>.from(json["production_countries"].map((x) => ProductionCountry.fromMap(x))),
+        releaseDate: json["release_date"] ?? '',
         revenue: json["revenue"] ?? 0,
         runtime: json["runtime"] ?? 0,
-        spokenLanguages: List<SpokenLanguage>.from(
-            json["spoken_languages"] ?? [].map((x) => SpokenLanguage.fromMap(x))),
+        spokenLanguages:
+            json["spoken_languages"] == null ? [] : List<SpokenLanguage>.from(json["spoken_languages"].map((x) => SpokenLanguage.fromMap(x))),
         status: json["status"] ?? '',
         tagline: json["tagline"] ?? '',
         title: json["title"] ?? '',
@@ -184,8 +205,7 @@ class MovieDetailModel extends MovieDetailEntity {
 
   String toJson() => json.encode(toMap());
 
-  factory MovieDetailModel.fromJson(String source) =>
-      MovieDetailModel.fromMap(json.decode(source));
+  factory MovieDetailModel.fromJson(String source) => MovieDetailModel.fromMap(json.decode(source));
 
   @override
   bool operator ==(Object other) {
@@ -267,8 +287,7 @@ class ProductionCompany {
   final String name;
   final String originCountry;
 
-  factory ProductionCompany.fromMap(Map<String, dynamic> json) =>
-      ProductionCompany(
+  factory ProductionCompany.fromMap(Map<String, dynamic> json) => ProductionCompany(
         id: json["id"],
         logoPath: json["logo_path"] ?? '',
         name: json["name"],
@@ -286,8 +305,7 @@ class ProductionCompany {
 
   String toJson() => json.encode(toMap());
 
-  factory ProductionCompany.fromJson(String source) =>
-      ProductionCompany.fromMap(json.decode(source));
+  factory ProductionCompany.fromJson(String source) => ProductionCompany.fromMap(json.decode(source));
 }
 
 class ProductionCountry {
@@ -299,8 +317,7 @@ class ProductionCountry {
   final String iso31661;
   final String name;
 
-  factory ProductionCountry.fromMap(Map<String, dynamic> json) =>
-      ProductionCountry(
+  factory ProductionCountry.fromMap(Map<String, dynamic> json) => ProductionCountry(
         iso31661: json["iso_3166_1"],
         name: json["name"],
       );

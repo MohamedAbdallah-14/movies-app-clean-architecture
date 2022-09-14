@@ -49,41 +49,43 @@ class SearchMovieCard extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(top: 30),
-                  //color: Colors.red,
-                  height: 60,
-                  width: 214,
-                  child: Text(
-                    movie.title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(top: 30),
+                    //color: Colors.red,
+                    height: 60,
+                    width: 214,
+                    child: Text(
+                      movie.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 3,
                     ),
-                    maxLines: 3,
                   ),
-                ),
-                Container(
-                  //color: Colors.green,
-                  height: 100,
-                  width: 253,
-                  child: Text(
-                    movie.overview,
-                    style: const TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
+                  Container(
+                    //color: Colors.green,
+                    height: 100,
+                    width: 253,
+                    child: Text(
+                      movie.overview,
+                      style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                      ),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                ),
-              ],
+                ],
+              ),
             )
           ],
         ),

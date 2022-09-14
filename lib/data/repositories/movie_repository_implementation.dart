@@ -5,6 +5,8 @@ import 'package:app_example/data/models/cast_crew_result_model.dart';
 import 'package:app_example/data/models/movie_detail_model.dart';
 import 'package:app_example/data/models/movie_model.dart';
 import 'package:app_example/data/models/video_model.dart';
+import 'package:app_example/domain/entitites.dart/actor_details_entity.dart';
+import 'package:app_example/domain/entitites.dart/cast_images_entity.dart';
 import 'package:app_example/domain/repositories/movie_repository.dart';
 import 'package:dartz/dartz.dart';
 
@@ -14,8 +16,7 @@ class MovieRepositoryImplementation implements IMovieRepository {
   MovieRepositoryImplementation(this.remoteDataSource);
 
   @override
-  Future<Either<Failure, List<MovieModel>>> getNowPlayingMovies(
-      int page) async {
+  Future<Either<Failure, List<MovieModel>>> getNowPlayingMovies(int page) async {
     try {
       final movies = await remoteDataSource.getNowPlayingMovies(page);
       return Right(movies.results);
@@ -108,12 +109,31 @@ class MovieRepositoryImplementation implements IMovieRepository {
   }
 
   @override
-  Future<Either<Failure, List<MovieModel>>> getSearchedMovies(
-      String searchText) async {
+  Future<Either<Failure, List<MovieModel>>> getSearchedMovies(String searchText) async {
     try {
       final movies = await remoteDataSource.getSearchedMovies(searchText);
       //print(movies.results);
       return Right(movies.results);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, CastImageEntity>> getCastImages(int personID) async {
+    try {
+      final personImages = await remoteDataSource.getCastImages(personID);
+      return Right(personImages);
+    } on ServerException {
+      return Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, ActorDetailsEntity>> getActorDetails(int personID) async {
+    try {
+      final actorDetails = await remoteDataSource.getActorDetails(personID);
+      return Right(actorDetails);
     } on ServerException {
       return Left(ServerFailure());
     }
