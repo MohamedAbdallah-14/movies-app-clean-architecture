@@ -2,6 +2,7 @@ import 'package:app_example/core/errors/failure.dart';
 import 'package:app_example/domain/entitites.dart/cast_entity.dart';
 import 'package:app_example/domain/entitites.dart/person_images_entity.dart';
 import 'package:app_example/domain/repositories/movie_repository.dart';
+import 'package:app_example/domain/repositories/person_repositories.dart';
 import 'package:app_example/domain/usecases/get_person_images_usecase.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -11,11 +12,11 @@ import '../../entities_fake/cast_entity_fake.dart';
 import '../../entities_fake/person_images_entity_fake.dart';
 
 
-class MockMovieRepository extends Mock implements IMovieRepository {}
+class MockMovieRepository extends Mock implements IPersonRepository {}
 
 void main() {
   late GetPersonImagesUsecase usecase;
-  late IMovieRepository repository;
+  late IPersonRepository repository;
 
   setUp(() {
     repository = MockMovieRepository();

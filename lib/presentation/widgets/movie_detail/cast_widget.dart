@@ -2,16 +2,15 @@
 
 import 'package:app_example/core/utils/api_utils.dart';
 import 'package:app_example/presentation/blocs/cast/bloc/cast_bloc.dart';
-import 'package:app_example/presentation/widgets/movie_detail/actor_detil_arguments.dart';
+import 'package:app_example/presentation/widgets/actor_widget/actor_detil_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class CastWidget extends StatelessWidget {
-  const CastWidget({Key? key, required this.castBloc}) : super(key: key);
-final CastBloc castBloc;
+  CastWidget({Key? key}) : super(key: key);
 
-  // final castBloc = Modular.get<CastBloc>();
+  final castBloc = Modular.get<CastBloc>();
 
   @override
   Widget build(BuildContext context) {

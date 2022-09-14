@@ -323,30 +323,4 @@ void main() {
     },
   );
 
-  test(
-    'should return a PersonModel when the method getPersonModel calls the datasource',
-    () async {
-      final getPersonList = PersonImageModel(id: 1158, profilePathModel: []);
-      // arrange
-      when(() => dataSource.getPersonImage(id))
-          .thenAnswer((_) async => getPersonList);
-      // act
-      final result = await repository.getPersonImages(id);
-      // assert
-      expect(result.isRight(), true);
-    },
-  );
-
-  test(
-    'should return a server failure when the method getPersonModel call is unsuccessful to the datasource',
-    () async {
-      // arrange
-      when(() => dataSource.getPersonImage(id))
-          .thenThrow(const ServerException('message'));
-      // act
-      final result = await repository.getPersonImages(id);
-      // assert
-      expect(result.isLeft(), true);
-    },
-  );
 }

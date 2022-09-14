@@ -1,4 +1,5 @@
 import 'package:app_example/app_module.dart';
+import 'package:app_example/presentation/widgets/actor_widget/actor_widget_data.dart';
 import 'package:app_example/presentation/widgets/movie_detail/cast_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:modular_test/modular_test.dart';
@@ -13,9 +14,14 @@ void main() {
       [AppModule()],
     );
   });
-  testWidgets('cast widget screen test', (tester) async {
+  testWidgets('Actor widget screen test', (tester) async {
     await tester.pumpWidget(
-      makeTestableWidget(child: CastWidget()),
+      makeTestableWidget(
+          child: ActorDetilsData(
+        name: "name",
+        bigraphy: " detils",
+        birthday: "17-7-1997",
+      )),
     );
     await tester.pump();
     //expect(find.byType(ListView), findsOneWidget);

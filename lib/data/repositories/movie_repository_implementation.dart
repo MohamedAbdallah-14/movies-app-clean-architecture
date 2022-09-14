@@ -121,14 +121,5 @@ class MovieRepositoryImplementation implements IMovieRepository {
     }
   }
 
-  @override
-  Future<Either<Failure, List<PersonImageEntity>>> getPersonImages(
-      int id) async {
-    try {
-      final personImage = await remoteDataSource.getPersonImage(id);
-      return Right(personImage.profilePathModel);
-    } on ServerException {
-      return Left(ServerFailure());
-    }
-  }
+
 }

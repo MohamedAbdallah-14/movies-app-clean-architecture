@@ -18,5 +18,4 @@ abstract class IMovieRepository {
   Future<Either<Failure, List<VideoEntity>>> getVideos(int id);
   Future<Either<Failure, List<MovieEntity>>> getSearchedMovies(
       String searchText);
-  Future<Either<Failure, List<PersonImageEntity>>> getPersonImages(int id);
 }

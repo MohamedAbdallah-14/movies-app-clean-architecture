@@ -1,8 +1,6 @@
-import 'package:app_example/core/utils/api_utils.dart';
 import 'package:app_example/presentation/blocs/cast/bloc/cast_bloc.dart';
 import 'package:app_example/presentation/blocs/movie_detail/bloc/movie_detail_bloc.dart';
 import 'package:app_example/presentation/blocs/videos/bloc/videos_bloc.dart';
-import 'package:app_example/presentation/widgets/movie_detail/actor_detil_arguments.dart';
 import 'package:app_example/presentation/widgets/movie_detail/cast_widget.dart';
 import 'package:app_example/presentation/widgets/movie_detail/movie_detail_arguments.dart';
 import 'package:app_example/presentation/widgets/movie_detail/videos_widget.dart';
@@ -15,8 +13,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 class MovieDetailScreen extends StatefulWidget {
   final MovieDetailArguments movieDetailArguments;
 
-  const MovieDetailScreen({Key? key, required this.movieDetailArguments})
-      : super(key: key);
+  const MovieDetailScreen({Key? key, required this.movieDetailArguments}) : super(key: key);
 
   @override
   State<MovieDetailScreen> createState() => _MovieDetailScreenState();
@@ -30,8 +27,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
   @override
   void initState() {
     super.initState();
-    movieDetailBloc
-        .add(MovieDetailLoadEvent(widget.movieDetailArguments.movieId));
+    movieDetailBloc.add(MovieDetailLoadEvent(widget.movieDetailArguments.movieId));
     castBloc = movieDetailBloc.castBloc;
     videosBloc = movieDetailBloc.videosBloc;
   }
@@ -129,8 +125,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               itemCount: 5,
-                              itemPadding:
-                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                               itemBuilder: (context, _) => const Icon(
                                 Icons.star,
                                 color: Colors.amber,
@@ -236,9 +231,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          CastWidget(
-                            castBloc: castBloc,
-                          ),
+                          CastWidget(),
                           VideosWidget(
                             videosBloc: videosBloc,
                           ),
@@ -251,7 +244,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             } else if (state is MovieDetailError) {
               return const Text('Something went wrong!');
             }
-            return const Center(child: CircularProgressIndicator.adaptive(),);
+            return const SizedBox.shrink();
           },
         ),
       ),

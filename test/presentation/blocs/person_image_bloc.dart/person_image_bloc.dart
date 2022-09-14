@@ -44,4 +44,5 @@ void main() {
     act: (bloc) => bloc.add(const LoadPersonImageEvent(personId: 1)),
     expect: () => const <PersonImageState>[PersonImageError('Something went wrong!')],
   );
+  
 }

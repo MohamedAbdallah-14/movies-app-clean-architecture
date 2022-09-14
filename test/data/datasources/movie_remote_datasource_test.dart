@@ -484,47 +484,4 @@ void main() {
       },
     );
   });
-
-
-    group('getPersonImages', () {
-    int id = 1158;
-    final urlgetPersonImages = '/person/$id/images?';
-    test(
-      'should call the (client) get method from correct urlgetPersonImages',
-      () async {
-        // arrange
-        setUpMockHttpClientSuccess200(urlgetPersonImages, jsonReader('person_image.json'));
-        // act
-        await dataSource.getPersonImage(id);
-        // assert
-        verify(() => client.get(urlgetPersonImages));
-      },
-    );
-
-    test(
-      '''should return a PersonImageResultModel from method getPersonImages
-       when the response code is 200''',
-      () async {
-        // arrange
-        setUpMockHttpClientSuccess200(urlgetPersonImages, jsonReader('person_image.json'));
-        // act
-        final result = await dataSource.getPersonImage(id);
-        // assert
-        expect(result, equals(personImageModel));
-      },
-    );
-
-    test(
-      '''should throw a ServerException from method getPersonImages
-       when the response code is 404''',
-      () async {
-        // arrange
-        setUpMockHttpClientFailure404(urlgetPersonImages, jsonReader('person_image.json'));
-        // act
-        final result = dataSource.getPersonImage(id);
-        // assert
-        expect(() async => result, throwsA(const ServerException('Something went wrong!')));
-      },
-    );
-  });
 }
