@@ -8,6 +8,9 @@ class ApiUrls {
   static String nowPlaying(int page) => '/movie/now_playing?&page=$page';
   //static String discoverMovies(int page) => '/discover/movie';
   static String movieGenres() => '/genre/movie/list';
+  static String actorDetails(int? id) => '/person/$id';
+  static String actorImages(int? id) => '/person/$id/images';
+
   static String searchMovies(String searchText) => '/search/movie?&query=$searchText';
   static String movie(int id) => '/movie/$id?';
   static String movieByGenres(int genreId) => '/movie/popular?&with_genres=$genreId';

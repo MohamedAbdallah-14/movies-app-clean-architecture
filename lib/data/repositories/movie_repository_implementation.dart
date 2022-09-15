@@ -19,7 +19,7 @@ class MovieRepositoryImplementation implements IMovieRepository {
     try {
       final movies = await remoteDataSource.getNowPlayingMovies(page);
       return Right(movies.results);
-    } on ServerException {
+    } catch(e) {
       return Left(
         ServerFailure(),
       );
