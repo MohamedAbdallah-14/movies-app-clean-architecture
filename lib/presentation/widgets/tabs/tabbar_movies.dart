@@ -1,7 +1,7 @@
-import 'package:app_example/presentation/themes/theme_colors.dart';
-import 'package:app_example/presentation/widgets/tabs/top_rated_movies_listview.dart';
-import 'package:app_example/presentation/widgets/tabs/trending_movies_listview.dart';
-import 'package:app_example/presentation/widgets/tabs/upcoming_soon_movies_listview.dart';
+import '../../themes/theme_colors.dart';
+import 'top_rated_movies_listview.dart';
+import 'trending_movies_listview.dart';
+import 'upcoming_soon_movies_listview.dart';
 import 'package:flutter/material.dart';
 
 class TabBarMovies extends StatefulWidget {
@@ -24,11 +24,11 @@ class TabBarMoviesState extends State<TabBarMovies> {
             indicatorWeight: 6,
             indicatorColor: ThemeColors.red,
             labelStyle: const TextStyle(
-              fontSize: 18,
+              fontSize: 17,
             ),
             tabs: [
               Padding(
-                padding: const EdgeInsets.only(bottom:20),
+                padding: const EdgeInsets.only(bottom: 10),
                 // ignore: avoid_unnecessary_containers
                 child: Container(
                   //color: Colors.deepPurpleAccent,
@@ -38,7 +38,7 @@ class TabBarMoviesState extends State<TabBarMovies> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom:20),
+                padding: const EdgeInsets.only(bottom: 20),
                 // ignore: avoid_unnecessary_containers
                 child: Container(
                   //color: Colors.deepPurpleAccent,
@@ -48,7 +48,7 @@ class TabBarMoviesState extends State<TabBarMovies> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom:20),
+                padding: const EdgeInsets.only(bottom: 20),
                 // ignore: avoid_unnecessary_containers
                 child: Container(
                   //color: Colors.deepPurpleAccent,

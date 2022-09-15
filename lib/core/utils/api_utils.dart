@@ -8,9 +8,13 @@ class ApiUrls {
   static String nowPlaying(int page) => '/movie/now_playing?&page=$page';
   //static String discoverMovies(int page) => '/discover/movie';
   static String movieGenres() => '/genre/movie/list';
-  static String searchMovies(String searchText) => '/search/movie?&query=$searchText';
+  static String personDetails(int id) => '/person/$id';
+  static String personImages(int id) => '/person/$id/images';
+  static String searchMovies(String searchText) =>
+      '/search/movie?&query=$searchText';
   static String movie(int id) => '/movie/$id?';
-  static String movieByGenres(int genreId) => '/movie/popular?&with_genres=$genreId';
+  static String movieByGenres(int genreId) =>
+      '/movie/popular?&with_genres=$genreId';
   static String movieCredits(int id) => '/movie/$id/credits?';
   static String movieVideos(int id) => '/movie/$id/videos?';
   // static Function similarMovies = (int id) => '/movie/$id/similar';
@@ -20,6 +24,6 @@ class ApiUrls {
   //     (String timeWindow) => '/trending/persons/$timeWindow';
   // static Function personDetails = (int id) => '/person/$id';
   // static Function personMovieCredits = (int id) => '/person/$id/movie_credits';
-  static String videoThumbnail(String key) => 'https://img.youtube.com/vi/$key/0.jpg';
-
+  static String videoThumbnail(String key) =>
+      'https://img.youtube.com/vi/$key/0.jpg';
 }

@@ -1,9 +1,10 @@
-import 'package:app_example/presentation/blocs/search_movies/bloc/search_movies_bloc.dart';
-import 'package:app_example/presentation/themes/theme_colors.dart';
-import 'package:app_example/presentation/widgets/search_bar/custom_search_movie_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../blocs/search_movies/bloc/search_movies_bloc.dart';
+import '../../themes/theme_colors.dart';
+import 'custom_search_movie_delegate.dart';
 
 class SearchBar extends StatelessWidget {
   final ValueChanged<String>? onChanged;

@@ -18,7 +18,7 @@ void main() {
   });
   testWidgets('videos widget screen test', (tester) async {
     await tester.pumpWidget(
-      makeTestableWidget(child: CastWidget()),
+      makeTestableWidget(child: const CastWidget()),
     );
     await tester.pump();
   });

@@ -1,10 +1,10 @@
-import 'package:app_example/core/errors/exceptions.dart';
-import 'package:app_example/core/http_client/http_client.dart';
-import 'package:app_example/core/utils/api_utils.dart';
-import 'package:app_example/data/models/cast_crew_result_model.dart';
-import 'package:app_example/data/models/movie_detail_model.dart';
-import 'package:app_example/data/models/movie_results_model.dart';
-import 'package:app_example/data/models/video_result_model.dart';
+import '../../core/errors/exceptions.dart';
+import '../../core/http_client/http_client.dart';
+import '../../core/utils/api_utils.dart';
+import '../models/cast_crew_result_model.dart';
+import '../models/movie_detail_model.dart';
+import '../models/movie_results_model.dart';
+import '../models/video_result_model.dart';
 import 'package:dio/dio.dart';
 
 abstract class IMovieRemoteDataSource {
@@ -39,8 +39,9 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
   @override
   Future<MovieResultsModel> getNowPlayingMovies(int page) async {
     Response response = await client.get(ApiUrls.nowPlaying(page));
+    // print(response.data);
     final movies = MovieResultsModel.fromMap(response.data);
-    //print(movies.results);
+    // print(movies.results);
     if (response.statusCode == 200) {
       return movies;
     } else {

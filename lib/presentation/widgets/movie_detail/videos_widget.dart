@@ -1,8 +1,9 @@
-import 'package:app_example/presentation/blocs/videos/bloc/videos_bloc.dart';
-import 'package:app_example/presentation/screens/watch_videos/watch_videos_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../blocs/videos/bloc/videos_bloc.dart';
+import '../../screens/watch_videos/watch_videos_arguments.dart';
 
 class VideosWidget extends StatelessWidget {
   final VideosBloc videosBloc;

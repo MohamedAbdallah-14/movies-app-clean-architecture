@@ -1,7 +1,7 @@
-import 'package:app_example/core/errors/failure.dart';
-import 'package:app_example/domain/entitites.dart/genre_entity.dart';
-import 'package:app_example/domain/repositories/genre_repository.dart';
-import 'package:app_example/domain/usecases/usecase.dart';
+import '../../core/errors/failure.dart';
+import '../entitites.dart/genre_entity.dart';
+import '../repositories/genre_repository.dart';
+import 'usecase.dart';
 import 'package:dartz/dartz.dart';
 
 class GetAllGenresUsecase implements UseCase<GenreEntity, NoParams> {

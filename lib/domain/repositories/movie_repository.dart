@@ -1,8 +1,8 @@
-import 'package:app_example/core/errors/failure.dart';
-import 'package:app_example/domain/entitites.dart/cast_entity.dart';
-import 'package:app_example/domain/entitites.dart/movie_detail_entity.dart';
-import 'package:app_example/domain/entitites.dart/movie_entity.dart';
-import 'package:app_example/domain/entitites.dart/video_entity.dart';
+import '../../core/errors/failure.dart';
+import '../entitites.dart/cast_entity.dart';
+import '../entitites.dart/movie_detail_entity.dart';
+import '../entitites.dart/movie_entity.dart';
+import '../entitites.dart/video_entity.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class IMovieRepository {

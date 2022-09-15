@@ -1,7 +1,8 @@
-import 'package:app_example/presentation/blocs/search_movies/bloc/search_movies_bloc.dart';
-import 'package:app_example/presentation/widgets/search_bar/search_movie_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../blocs/search_movies/bloc/search_movies_bloc.dart';
+import 'search_movie_card.dart';
 
 class CustomSearchDelegate extends SearchDelegate {
   final SearchMoviesBloc searchMovieBloc;

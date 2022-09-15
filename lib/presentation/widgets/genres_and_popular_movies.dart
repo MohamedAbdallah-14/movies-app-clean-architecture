@@ -1,13 +1,13 @@
-import 'package:app_example/domain/entitites.dart/genre_entity.dart';
-import 'package:app_example/presentation/blocs/genres_bloc/genre_bloc.dart';
-import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
-import 'package:app_example/presentation/themes/theme_colors.dart';
-import 'package:app_example/presentation/widgets/movie_card_widget.dart';
+import '../../domain/entitites.dart/genre_entity.dart';
+import '../blocs/genres_bloc/genre_bloc.dart';
+import '../blocs/movies/movies_bloc.dart';
+import '../themes/theme_colors.dart';
+import 'movie_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:app_example/core/utils/string_extension_greater_15.dart';
+import '../../core/utils/string_extension_greater_15.dart';
 
 class TabGenresWidget extends StatefulWidget {
   const TabGenresWidget({Key? key}) : super(key: key);
@@ -70,8 +70,9 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
               } else if (state is GenreLoaded) {
                 List<GenreEntity> genres = state.genreList;
                 return SizedBox(
-                  height: 60,
+                  height: MediaQuery.of(context).size.height / 9,
                   child: ListView.separated(
+                    shrinkWrap: true,
                     separatorBuilder: (BuildContext context, int index) =>
                         const VerticalDivider(
                       color: Colors.transparent,
@@ -152,7 +153,7 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                 //_moviesList.addAll(state.movies);
                 return SizedBox(
                   //color: Colors.green,
-                  height: 360,
+                  height: MediaQuery.of(context).size.height / 2.4,
                   child: ListView.separated(
                     controller: _scrollController,
                     separatorBuilder: (context, index) => const VerticalDivider(
@@ -162,87 +163,82 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                     scrollDirection: Axis.horizontal,
                     itemCount: state.movies.length,
                     itemBuilder: (context, index) {
-                      return SizedBox(
-                        height: 360,
-                        //color: Colors.red,
-                        child: Column(
-                          //crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 11),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(11),
+                      return Column(
+                        //crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 11),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(11),
+                              child: SizedBox(
+                                height: MediaQuery.of(context).size.height / 3,
                                 child: SizedBox(
-                                  height: 300,
-                                  child: SizedBox(
-                                    child: MovieCardWidget(
-                                      movieId: state.movies[index].id!,
-                                      posterPath:
-                                          state.movies[index].posterPath!,
-                                    ),
+                                  child: MovieCardWidget(
+                                    movieId: state.movies[index].id!,
+                                    posterPath: state.movies[index].posterPath!,
                                   ),
                                 ),
                               ),
                             ),
-                            const SizedBox(
-                              height: 10,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                            height: 20,
+                            //color: Colors.cyan,
+                            child: Text(
+                              state.movies[index].title.wordTrim15(),
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                overflow: TextOverflow.ellipsis,
+                              ),
                             ),
-                            SizedBox(
-                              height: 20,
-                              //color: Colors.cyan,
-                              child: Text(
-                                state.movies[index].title.wordTrim15(),
-                                textAlign: TextAlign.center,
-                                maxLines: 2,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18,
-                                  overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                            //color: Colors.purple,
+                            child: Row(
+                              children: [
+                                RatingBar.builder(
+                                  unratedColor: const Color(0xFF383536),
+                                  ignoreGestures: true,
+                                  itemSize: 18,
+                                  initialRating:
+                                      state.movies[index].voteAverage / 2,
+                                  minRating: 1,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemPadding: const EdgeInsets.symmetric(
+                                      horizontal: 4.0),
+                                  itemBuilder: (context, _) => const Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  onRatingUpdate: (rating) {
+                                    //print(rating);
+                                  },
                                 ),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            SizedBox(
-                              //color: Colors.purple,
-                              child: Row(
-                                children: [
-                                  RatingBar.builder(
-                                    unratedColor: const Color(0xFF383536),
-                                    ignoreGestures: true,
-                                    itemSize: 18,
-                                    initialRating:
-                                        state.movies[index].voteAverage / 2,
-                                    minRating: 1,
-                                    direction: Axis.horizontal,
-                                    allowHalfRating: true,
-                                    itemCount: 5,
-                                    itemPadding: const EdgeInsets.symmetric(
-                                        horizontal: 4.0),
-                                    itemBuilder: (context, _) => const Icon(
-                                      Icons.star,
-                                      color: Colors.amber,
-                                    ),
-                                    onRatingUpdate: (rating) {
-                                      //print(rating);
-                                    },
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 5),
-                                    child: Text(
-                                      state.movies[index].voteAverage.toString(),
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                      ),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5),
+                                  child: Text(
+                                    state.movies[index].voteAverage.toString(),
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       );
                     },
                   ),

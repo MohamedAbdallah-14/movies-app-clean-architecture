@@ -1,7 +1,8 @@
-import 'package:app_example/core/utils/api_utils.dart';
-import 'package:app_example/presentation/widgets/movie_detail/movie_detail_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+
+import '../../core/utils/api_utils.dart';
+import 'movie_detail/movie_detail_arguments.dart';
 
 class MovieCardWidget extends StatelessWidget {
   final int movieId;

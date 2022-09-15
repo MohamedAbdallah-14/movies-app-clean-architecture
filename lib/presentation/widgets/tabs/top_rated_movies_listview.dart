@@ -1,7 +1,7 @@
-import 'package:app_example/domain/entitites.dart/movie_entity.dart';
-import 'package:app_example/presentation/blocs/genres_bloc/genre_bloc.dart';
-import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
-import 'package:app_example/presentation/widgets/tabs/movie_tab_card_widget.dart';
+import '../../../domain/entitites.dart/movie_entity.dart';
+import '../../blocs/genres_bloc/genre_bloc.dart';
+import '../../blocs/movies/movies_bloc.dart';
+import 'movie_tab_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -59,7 +59,7 @@ class _TopRatedMoviesListViewState extends State<TopRatedMoviesListView> {
             }
             return ListView.separated(
               controller: _scrollController,
-              shrinkWrap: true,
+              // shrinkWrap: true,
               itemCount: _movies.length,
               scrollDirection: Axis.vertical,
               separatorBuilder: (BuildContext context, int index) {

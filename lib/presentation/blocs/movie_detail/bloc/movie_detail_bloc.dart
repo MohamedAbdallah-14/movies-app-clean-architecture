@@ -1,9 +1,10 @@
-import 'package:app_example/domain/entitites.dart/movie_detail_entity.dart';
-import 'package:app_example/domain/usecases/get_movie_detail.dart';
-import 'package:app_example/presentation/blocs/cast/bloc/cast_bloc.dart';
-import 'package:app_example/presentation/blocs/videos/bloc/videos_bloc.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../domain/entitites.dart/movie_detail_entity.dart';
+import '../../../../domain/usecases/get_movie_detail.dart';
+import '../../cast/bloc/cast_bloc.dart';
+import '../../videos/bloc/videos_bloc.dart';
 
 part 'movie_detail_event.dart';
 part 'movie_detail_state.dart';

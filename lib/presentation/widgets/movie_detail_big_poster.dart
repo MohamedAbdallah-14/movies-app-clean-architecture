@@ -1,7 +1,8 @@
-import 'package:app_example/core/utils/api_utils.dart';
-import 'package:app_example/domain/entitites.dart/movie_detail_entity.dart';
-import 'package:app_example/presentation/widgets/movie_detail/movie_detail_appbar.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/utils/api_utils.dart';
+import '../../domain/entitites.dart/movie_detail_entity.dart';
+import 'movie_detail/movie_detail_appbar.dart';
 
 class MovieDetailBigPoster extends StatelessWidget {
   final MovieDetailEntity movie;

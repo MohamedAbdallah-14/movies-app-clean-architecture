@@ -1,6 +1,7 @@
-import 'package:app_example/data/models/genre_model.dart';
-import 'package:app_example/data/models/movie_detail_model.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../data/models/genre_model.dart';
+import '../../data/models/movie_detail_model.dart';
 
 class MovieDetailEntity extends Equatable {
   final bool adult;

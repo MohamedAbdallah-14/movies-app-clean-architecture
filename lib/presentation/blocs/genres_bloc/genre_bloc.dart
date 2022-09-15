@@ -1,8 +1,9 @@
-import 'package:app_example/domain/entitites.dart/genre_entity.dart';
-import 'package:app_example/domain/usecases/get_all_genres_usecase.dart';
-import 'package:app_example/domain/usecases/usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../domain/entitites.dart/genre_entity.dart';
+import '../../../domain/usecases/get_all_genres_usecase.dart';
+import '../../../domain/usecases/usecase.dart';
 
 part 'genre_event.dart';
 part 'genre_state.dart';
