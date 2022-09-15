@@ -51,7 +51,7 @@ class _TopRatedMoviesListViewState extends State<TopRatedMoviesListView> {
           builder: (context, state) {
             if (state is MoviesInitial ||
                 state is MoviesLoading && _movies.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator.adaptive());
             } else if (state is MoviesLoaded) {
               _movies.addAll(state.movies);
             } else if (state is MoviesError) {
@@ -69,16 +69,12 @@ class _TopRatedMoviesListViewState extends State<TopRatedMoviesListView> {
               },
               itemBuilder: (context, index) {
                 final MovieEntity movie = _movies[index];
-                return Column(
-                  children: [
-                    MovieTabCardWidget(
-                      movieId: movie.id!,
-                      title: movie.title,
-                      posterPath: movie.posterPath!,
-                      voteAverage: movie.voteAverage,
-                      releaseDate: movie.releaseDate,
-                    ),
-                  ],
+                return MovieTabCardWidget(
+                  movieId: movie.id!,
+                  title: movie.title,
+                  posterPath: movie.posterPath!,
+                  voteAverage: movie.voteAverage,
+                  releaseDate: movie.releaseDate,
                 );
               },
             );

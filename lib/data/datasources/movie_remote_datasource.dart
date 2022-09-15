@@ -4,6 +4,7 @@ import 'package:app_example/core/utils/api_utils.dart';
 import 'package:app_example/data/models/cast_crew_result_model.dart';
 import 'package:app_example/data/models/movie_detail_model.dart';
 import 'package:app_example/data/models/movie_results_model.dart';
+import 'package:app_example/data/models/person_image_model.dart';
 import 'package:app_example/data/models/video_result_model.dart';
 import 'package:dio/dio.dart';
 
@@ -18,6 +19,7 @@ abstract class IMovieRemoteDataSource {
   Future<CastCrewResultModel> getCastCrew(int id);
   Future<VideoResultModel> getVideos(int id);
   Future<MovieResultsModel> getSearchedMovies(String searchText);
+
 }
 
 class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
@@ -146,4 +148,6 @@ class MovieRemoteDataSourceImplementation implements IMovieRemoteDataSource {
       throw const ServerException('Something went wrong!');
     }
   }
+  
+
 }

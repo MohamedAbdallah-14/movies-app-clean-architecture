@@ -65,7 +65,7 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
             builder: (context, state) {
               if (state is GenreLoading) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator.adaptive(),
                 );
               } else if (state is GenreLoaded) {
                 List<GenreEntity> genres = state.genreList;
@@ -249,7 +249,7 @@ class TabGenresWidgetState extends State<TabGenresWidget> {
                 );
               } else if (state is MoviesLoading) {
                 return const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator.adaptive(),
                 );
               }
               return Container();

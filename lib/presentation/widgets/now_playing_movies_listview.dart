@@ -51,7 +51,7 @@ class _HomePageState extends State<NowPlayingMoviesScreen> {
           builder: (context, state) {
             if (state is MoviesInitial ||
                 state is MoviesLoading && _listMovies.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator.adaptive()); 
             } else if (state is MoviesLoaded) {
               _listMovies.addAll(state.movies);
             } else if (state is MoviesError) {

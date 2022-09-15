@@ -4,7 +4,9 @@ import 'package:app_example/data/datasources/movie_remote_datasource.dart';
 import 'package:app_example/data/models/cast_crew_result_model.dart';
 import 'package:app_example/data/models/movie_detail_model.dart';
 import 'package:app_example/data/models/movie_model.dart';
+import 'package:app_example/data/models/person_image_model.dart';
 import 'package:app_example/data/models/video_model.dart';
+import 'package:app_example/domain/entitites.dart/person_images_entity.dart';
 import 'package:app_example/domain/repositories/movie_repository.dart';
 import 'package:dartz/dartz.dart';
 
@@ -118,4 +120,6 @@ class MovieRepositoryImplementation implements IMovieRepository {
       return Left(ServerFailure());
     }
   }
+
+
 }

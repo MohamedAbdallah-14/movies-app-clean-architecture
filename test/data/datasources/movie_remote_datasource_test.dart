@@ -11,6 +11,7 @@ import '../../fixtures/fixture_reader.dart';
 import '../../models_fake/cast_crew_result_model_fake.dart';
 import '../../models_fake/movie_detail_model_fake.dart';
 import '../../models_fake/movie_result_model_fake.dart';
+import '../../models_fake/person_image_model_fake.dart';
 import '../../models_fake/video_result_model_fake.dart';
 
 

@@ -42,7 +42,7 @@ class _TrendingMoviesListViewState extends State<TrendingMoviesListView> {
           builder: (context, state) {
             if (state is MoviesInitial ||
                 state is MoviesLoading && _movies.isEmpty) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator.adaptive());
             } else if (state is MoviesLoaded) {
               _movies.addAll(state.movies);
             } else if (state is MoviesError) {

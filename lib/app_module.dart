@@ -1,9 +1,13 @@
 import 'package:app_example/core/http_client/dio_implementation.dart';
 import 'package:app_example/data/datasources/movie_remote_datasource.dart';
+import 'package:app_example/data/datasources/person_remote_data_source.dart';
 import 'package:app_example/data/repositories/genre_repository_implementation.dart';
 import 'package:app_example/data/repositories/movie_repository_implementation.dart';
+import 'package:app_example/data/repositories/person_repository_implementation.dart';
 import 'package:app_example/domain/usecases/get_cast_usecase.dart';
 import 'package:app_example/domain/usecases/get_movie_detail.dart';
+import 'package:app_example/domain/usecases/get_person_detils_usecase.dart';
+import 'package:app_example/domain/usecases/get_person_images_usecase.dart';
 import 'package:app_example/domain/usecases/get_videos_usecase.dart';
 import 'package:app_example/domain/usecases/search_movies_usecase.dart';
 import 'package:app_example/presentation/blocs/cast/bloc/cast_bloc.dart';
@@ -11,8 +15,11 @@ import 'package:app_example/presentation/blocs/cubit/animation/animation_cubit.d
 import 'package:app_example/presentation/blocs/genres_bloc/genre_bloc.dart';
 import 'package:app_example/presentation/blocs/movie_detail/bloc/movie_detail_bloc.dart';
 import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
+import 'package:app_example/presentation/blocs/person_details/person_details_bloc.dart';
+import 'package:app_example/presentation/blocs/person_image_bloc.dart/person_image_bloc.dart';
 import 'package:app_example/presentation/blocs/search_movies/bloc/search_movies_bloc.dart';
 import 'package:app_example/presentation/blocs/videos/bloc/videos_bloc.dart';
+import 'package:app_example/presentation/screens/actor_detil_screen.dart';
 
 import 'package:app_example/presentation/screens/home_screen.dart';
 import 'package:app_example/presentation/screens/movie_detail_screen.dart';
@@ -36,7 +43,7 @@ class AppModule extends Module {
         Bind.factory((i) => GenreBloc(i())),
         Bind.factory((i) => MoviesBloc(i(), i(), i(), i(), i(), i())),
         Bind.factory((i) => MovieDetailBloc(i(), i(), i())),
-        Bind.factory((i) => CastBloc(i())),
+        Bind.lazySingleton((i) => CastBloc(i())),
         Bind.factory((i) => VideosBloc(i())),
         Bind.factory((i) => SearchMoviesBloc(i())),
         Bind.factory((i) => MovieRemoteDataSourceImplementation(i())),
@@ -47,8 +54,7 @@ class AppModule extends Module {
                   'api-key': '',
                   'contentType': 'application/json; charset=utf-8',
                   'language': 'en-US',
-                  'authorization':
-                      'Bearer '
+                  'authorization': 'Bearer '
                 },
               ),
             )),
@@ -68,8 +74,14 @@ class AppModule extends Module {
         Bind.lazySingleton((i) => GetCastUsecase(i())),
         Bind.lazySingleton((i) => GetVideosUsecase(i())),
         Bind.lazySingleton((i) => SearchMoviesUsecase(i())),
+        Bind.lazySingleton((i) => PersonRemoteDataSourceImpl(client: i())),
+        Bind.lazySingleton(
+            (i) => PersonRepositoryImplementation(remoteDataSource: i())),
+        Bind.lazySingleton((i) => GetPersonImagesUsecase(i())),
+        Bind.lazySingleton((i) => GetPersonDataUseCase(i())),
+        Bind.factory((i) => PersonImageBloc(i())),
+        Bind.factory((i) => PersonDetailsBloc(useCase: i())),
       ];
-
   @override
   final List<ModularRoute> routes = [
     ChildRoute('/', child: (_, __) => const HomeScreen()),
@@ -83,6 +95,10 @@ class AppModule extends Module {
       '/videos',
       child: (context, args) =>
           WatchVideosScreen(watchVideoArguments: args.data),
+    ),
+    ChildRoute(
+      '/actor_detil',
+      child: (context, args) => ActorDetilScreen(actorDetilAruments: args.data),
     ),
   ];
 }
