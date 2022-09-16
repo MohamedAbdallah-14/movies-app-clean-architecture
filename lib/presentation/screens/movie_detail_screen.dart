@@ -13,7 +13,8 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 class MovieDetailScreen extends StatefulWidget {
   final MovieDetailArguments movieDetailArguments;
 
-  const MovieDetailScreen({Key? key, required this.movieDetailArguments}) : super(key: key);
+  const MovieDetailScreen({Key? key, required this.movieDetailArguments})
+      : super(key: key);
 
   @override
   State<MovieDetailScreen> createState() => _MovieDetailScreenState();
@@ -21,15 +22,22 @@ class MovieDetailScreen extends StatefulWidget {
 
 class _MovieDetailScreenState extends State<MovieDetailScreen> {
   final movieDetailBloc = Modular.get<MovieDetailBloc>();
-  var castBloc = Modular.get<CastBloc>();
-  var videosBloc = Modular.get<VideosBloc>();
+  late CastBloc castBloc;
+  late VideosBloc videosBloc;
 
   @override
   void initState() {
     super.initState();
-    movieDetailBloc.add(MovieDetailLoadEvent(widget.movieDetailArguments.movieId));
+    movieDetailBloc
+        .add(MovieDetailLoadEvent(widget.movieDetailArguments.movieId));
     castBloc = movieDetailBloc.castBloc;
     videosBloc = movieDetailBloc.videosBloc;
+  }
+
+  @override
+  void dispose() {
+    movieDetailBloc.close();
+    super.dispose();
   }
 
   @override
@@ -38,8 +46,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
       body: MultiBlocProvider(
         providers: [
           BlocProvider.value(value: movieDetailBloc),
-          BlocProvider.value(value: castBloc),
-          BlocProvider.value(value: videosBloc),
+          // BlocProvider.value(value: castBloc),
+          // BlocProvider.value(value: videosBloc),
         ],
         child: BlocBuilder<MovieDetailBloc, MovieDetailState>(
           bloc: movieDetailBloc,
@@ -125,7 +133,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               itemCount: 5,
-                              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
                               itemBuilder: (context, _) => const Icon(
                                 Icons.star,
                                 color: Colors.amber,
@@ -231,7 +240,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           const SizedBox(
                             height: 10,
                           ),
-                          CastWidget(),
+                          CastWidget(castBloc: castBloc),
                           VideosWidget(
                             videosBloc: videosBloc,
                           ),

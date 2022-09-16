@@ -13,10 +13,14 @@ class CastCrewResultModel extends Equatable {
   final List<CastModel> cast;
   final List<Crew> crew;
 
-  factory CastCrewResultModel.fromMap(Map<String, dynamic> json) => CastCrewResultModel(
+  factory CastCrewResultModel.fromMap(Map<String, dynamic> json) =>
+      CastCrewResultModel(
         id: json["id"] ?? 1,
-        cast: List<CastModel>.from(json["cast"] ?? [].map((x) => CastModel.fromMap(x))),
-        crew: List<Crew>.from(json["crew"] ?? [].map((x) => Crew.fromMap(x))),
+        cast: List<CastModel>.from(
+            (json["cast"] ?? []).map((x) => CastModel.fromMap(x))),
+        crew: List<Crew>.from(
+          (json["crew"] ?? []).map((x) => Crew.fromMap(x)),
+        ),
       );
 
   Map<String, dynamic> toMap() {
@@ -50,6 +54,7 @@ class CastModel extends CastEntity {
           name: name,
           posterPath: profilePath,
           character: character,
+          id: id,
         );
   final bool adult;
   final int gender;
