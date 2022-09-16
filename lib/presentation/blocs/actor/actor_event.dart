@@ -8,7 +8,7 @@ abstract class ActorEvent extends Equatable {
 }
 
 class ActorDetailsEvent extends ActorEvent {
-  final int? actorId;
+  final String? actorId;
 
   const ActorDetailsEvent(this.actorId);
 
@@ -17,7 +17,7 @@ class ActorDetailsEvent extends ActorEvent {
 }
 
 class ActorImagesEvent extends ActorEvent {
-  final int? actorId;
+  final String? actorId;
 
   const ActorImagesEvent(this.actorId);
 

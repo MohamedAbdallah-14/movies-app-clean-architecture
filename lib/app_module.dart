@@ -1,4 +1,5 @@
 import 'package:app_example/core/http_client/dio_implementation.dart';
+import 'package:app_example/data/datasources/actor_remote_datasource.dart';
 import 'package:app_example/data/datasources/movie_remote_datasource.dart';
 import 'package:app_example/data/repositories/actor_repository_imp.dart';
 import 'package:app_example/data/repositories/genre_repository_implementation.dart';
@@ -16,6 +17,7 @@ import 'package:app_example/presentation/blocs/movie_detail/bloc/movie_detail_bl
 import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
 import 'package:app_example/presentation/blocs/search_movies/bloc/search_movies_bloc.dart';
 import 'package:app_example/presentation/blocs/videos/bloc/videos_bloc.dart';
+import 'package:app_example/presentation/screens/actor_screen.dart';
 import 'package:app_example/presentation/screens/home_screen.dart';
 import 'package:app_example/presentation/screens/movie_detail_screen.dart';
 import 'package:app_example/presentation/screens/watch_videos/watch_videos_screen.dart';
@@ -44,6 +46,7 @@ class AppModule extends Module {
         Bind.factory((i) => VideosBloc(i())),
         Bind.factory((i) => SearchMoviesBloc(i())),
         Bind.factory((i) => MovieRemoteDataSourceImplementation(i())),
+        Bind.factory((i) => ActorRemoteRemoteDataSource(i())),
         Bind.lazySingleton((i) => Dio(
               BaseOptions(
                 baseUrl: "https://api.themoviedb.org/3",
@@ -91,6 +94,10 @@ class AppModule extends Module {
       '/videos',
       child: (context, args) =>
           WatchVideosScreen(watchVideoArguments: args.data),
+    ),
+    ChildRoute(
+      '/actor',
+      child: (context, args) => ActorScreen(actorId: args.data),
     ),
   ];
 }

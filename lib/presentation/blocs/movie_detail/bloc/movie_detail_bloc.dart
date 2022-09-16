@@ -27,4 +27,11 @@ class MovieDetailBloc extends Bloc<MovieDetailEvent, MovieDetailState> {
     castBloc.add(LoadCastEvent(movieId: event.movieId));
     videosBloc.add(LoadVideosEvent(event.movieId));
   }
+
+  @override
+  Future<void> close() {
+    castBloc.close();
+    videosBloc.close();
+    return super.close();
+  }
 }

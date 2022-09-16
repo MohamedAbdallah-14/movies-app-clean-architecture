@@ -7,9 +7,9 @@ import 'package:app_example/data/models/actor_images_model.dart';
 import 'package:app_example/data/models/actor_model.dart';
 
 abstract class IActorRemoteDataSource {
-  Future<ActorModel> getActorDetails(int? actorId);
+  Future<ActorModel> getActorDetails(String? actorId);
 
-  Future<ActorImagesResponse> getActorImages(int? actorId);
+  Future<ActorImagesResponse> getActorImages(String? actorId);
 }
 
 class ActorRemoteRemoteDataSource extends IActorRemoteDataSource {
@@ -18,7 +18,7 @@ class ActorRemoteRemoteDataSource extends IActorRemoteDataSource {
   ActorRemoteRemoteDataSource(this.client);
 
   @override
-  Future<ActorModel> getActorDetails(int? actorId) async {
+  Future<ActorModel> getActorDetails(String? actorId) async {
     final response = await client.get(ApiUrls.actorDetails(actorId));
     if (response.statusCode == HttpStatus.ok) {
       return ActorModel.fromMap(response.data);
@@ -28,7 +28,7 @@ class ActorRemoteRemoteDataSource extends IActorRemoteDataSource {
   }
 
   @override
-  Future<ActorImagesResponse> getActorImages(int? actorId) async {
+  Future<ActorImagesResponse> getActorImages(String? actorId) async {
     final response = await client.get(ApiUrls.actorImages(actorId));
     if (response.statusCode == HttpStatus.ok) {
       return ActorImagesResponse.fromMap(response.data);

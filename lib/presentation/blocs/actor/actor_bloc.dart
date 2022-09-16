@@ -15,27 +15,30 @@ class ActorBloc extends Bloc<ActorEvent, ActorState> {
   final GetActorImagesUseCase getActorImagesUseCase;
 
   ActorBloc(
-      {
-      required this.getActorDetailsUseCase,
+      {required this.getActorDetailsUseCase,
       required this.getActorImagesUseCase})
-      : super(ActorInitial()) {
+      : super(const ActorInitial()) {
     on<ActorDetailsEvent>(getActorDetails);
     on<ActorImagesEvent>(getActorImages);
   }
-
   Future<void> getActorDetails(
       ActorDetailsEvent event, Emitter<ActorState> emit) async {
-    emit(ActorLoading());
+    emit(const ActorLoading());
     final actorDetails = await getActorDetailsUseCase(event.actorId);
-    actorDetails.fold(
-        (l) => emit(ActorError(l.toString())), (r) => ActorDetails(r));
+    emit(actorDetails.fold(
+        (l) => ActorError(message: l.toString()), (r) => ActorDetails(r)));
   }
 
   Future<void> getActorImages(
       ActorImagesEvent event, Emitter<ActorState> emit) async {
-    emit(ActorLoading());
+    emit(const ActorLoading());
     final actorDetails = await getActorImagesUseCase(event.actorId);
-    actorDetails.fold(
-        (l) => emit(ActorError(l.toString())), (r) => ActorImagesState(r));
+    emit(actorDetails.fold(
+        (l) => ActorError(message: l.toString()), (r) => ActorImagesState(r)));
+  }
+
+  @override
+  Future<void> close() {
+    return super.close();
   }
 }

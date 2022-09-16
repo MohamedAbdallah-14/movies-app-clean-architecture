@@ -12,7 +12,7 @@ class ActorRepositoryImplementation extends IActorRepository {
   ActorRepositoryImplementation(this.actorRemoteDataSource);
 
   @override
-  Future<Either<Failure, ActorEntity>> getActorDetails(int? actorId) async {
+  Future<Either<Failure, ActorEntity>> getActorDetails(String? actorId) async {
     try {
       final result = await actorRemoteDataSource.getActorDetails(actorId);
       return Right(result.toActorEntity());
@@ -22,7 +22,7 @@ class ActorRepositoryImplementation extends IActorRepository {
   }
 
   @override
-  Future<Either<Failure, List<ActorImageEntity>>> getActorImages(int? actorId) async {
+  Future<Either<Failure, List<ActorImageEntity>>> getActorImages(String? actorId) async {
     try {
       final result = await actorRemoteDataSource.getActorImages(actorId);
       return Right(result.toEntity());

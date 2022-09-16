@@ -7,9 +7,13 @@ abstract class ActorState extends Equatable {
   List<Object?> get props => [];
 }
 
-class ActorInitial extends ActorState {}
+class ActorInitial extends ActorState {
+  const ActorInitial();
+}
 
-class ActorLoading extends ActorState {}
+class ActorLoading extends ActorState {
+  const ActorLoading();
+}
 
 class ActorDetails extends ActorState {
   final ActorEntity actorEntity;
@@ -30,9 +34,9 @@ class ActorImagesState extends ActorState {
 }
 
 class ActorError extends ActorState {
-  final String message;
+  final String? message;
 
-  const ActorError(this.message);
+  const ActorError({this.message});
 
   @override
   List<Object?> get props => [message];

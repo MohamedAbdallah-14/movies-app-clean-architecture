@@ -1,28 +1,29 @@
 import 'package:app_example/core/utils/api_utils.dart';
 import 'package:app_example/domain/entitites.dart/actor_entity.dart';
+import 'package:equatable/equatable.dart';
 
-class ActorModel {
+class ActorModel extends Equatable {
   final String? biography,
       birthday,
       deathday,
-      id,
-      imdb_id,
-      known_for_department,
+      imdbId,
+      knownForDepartment,
       name,
-      place_of_birth,
-      profile_path;
-  final int? popularity;
+      placeOfBirth,
+      profilePath;
+  final num? popularity;
+  final num? id;
 
   const ActorModel(
       {this.biography,
       this.birthday,
       this.deathday,
       this.id,
-      this.imdb_id,
-      this.known_for_department,
+      this.imdbId,
+      this.knownForDepartment,
       this.name,
-      this.place_of_birth,
-      this.profile_path,
+      this.placeOfBirth,
+      this.profilePath,
       this.popularity});
 
   factory ActorModel.fromMap(Map<String, dynamic> map) {
@@ -30,21 +31,35 @@ class ActorModel {
       biography: map['biography'] as String?,
       birthday: map['birthday'] as String?,
       deathday: map['deathday'] as String?,
-      id: map['id'] as String?,
-      imdb_id: map['imdb_id'] as String?,
-      known_for_department: map['known_for_department'] as String?,
+      id: map['id'] as int?,
+      imdbId: map['imdb_id'] as String?,
+      knownForDepartment: map['known_for_department'] as String?,
       name: map['name'] as String?,
-      place_of_birth: map['place_of_birth'] as String?,
-      profile_path: map['profile_path'] as String?,
-      popularity: map['popularity'] as int?,
+      placeOfBirth: map['place_of_birth'] as String?,
+      profilePath: map['profile_path'] as String?,
+      popularity: map['popularity'] as num?,
     );
   }
 
   ActorEntity toActorEntity() => ActorEntity(
-      id: id,
+      id: id?.toString(),
       name: name,
       biography: biography,
       birthday: birthday,
       profilePicture:
-          profile_path != null ? ApiUrls.requestImage(profile_path!) : null);
+          profilePath != null ? ApiUrls.requestImage(profilePath!) : null);
+
+  @override
+  List<Object?> get props => [
+        biography,
+        birthday,
+        deathday,
+        imdbId,
+        knownForDepartment,
+        name,
+        placeOfBirth,
+        profilePath,
+        id,
+        popularity,
+      ];
 }
