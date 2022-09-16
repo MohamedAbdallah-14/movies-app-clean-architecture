@@ -1,7 +1,7 @@
-import 'package:app_example/core/errors/failure.dart';
-import 'package:app_example/domain/entitites.dart/movie_entity.dart';
-import 'package:app_example/domain/repositories/movie_repository.dart';
-import 'package:app_example/domain/usecases/usecase.dart';
+import '../../core/errors/failure.dart';
+import '../entitites.dart/movie_entity.dart';
+import '../repositories/movie_repository.dart';
+import 'usecase.dart';
 import 'package:dartz/dartz.dart';
 
 class GetUpcomingMoviesUsecase implements UseCase <MovieEntity, int> {

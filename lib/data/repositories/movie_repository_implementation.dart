@@ -1,12 +1,13 @@
-import 'package:app_example/core/errors/exceptions.dart';
-import 'package:app_example/core/errors/failure.dart';
-import 'package:app_example/data/datasources/movie_remote_datasource.dart';
-import 'package:app_example/data/models/cast_crew_result_model.dart';
-import 'package:app_example/data/models/movie_detail_model.dart';
-import 'package:app_example/data/models/movie_model.dart';
-import 'package:app_example/data/models/video_model.dart';
-import 'package:app_example/domain/repositories/movie_repository.dart';
 import 'package:dartz/dartz.dart';
+
+import '../../core/errors/exceptions.dart';
+import '../../core/errors/failure.dart';
+import '../../domain/repositories/movie_repository.dart';
+import '../datasources/movie_remote_datasource.dart';
+import '../models/cast_crew_result_model.dart';
+import '../models/movie_detail_model.dart';
+import '../models/movie_model.dart';
+import '../models/video_model.dart';
 
 class MovieRepositoryImplementation implements IMovieRepository {
   final IMovieRemoteDataSource remoteDataSource;

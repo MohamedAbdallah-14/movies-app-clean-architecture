@@ -1,7 +1,8 @@
-import 'package:app_example/domain/entitites.dart/movie_entity.dart';
-import 'package:app_example/domain/usecases/search_movies_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../domain/entitites.dart/movie_entity.dart';
+import '../../../../domain/usecases/search_movies_usecase.dart';
 
 part 'search_movies_event.dart';
 part 'search_movies_state.dart';

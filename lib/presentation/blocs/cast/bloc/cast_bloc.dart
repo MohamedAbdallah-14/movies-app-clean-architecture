@@ -1,7 +1,8 @@
-import 'package:app_example/domain/entitites.dart/cast_entity.dart';
-import 'package:app_example/domain/usecases/get_cast_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../domain/entitites.dart/cast_entity.dart';
+import '../../../../domain/usecases/get_cast_usecase.dart';
 
 part 'cast_event.dart';
 part 'cast_state.dart';

@@ -1,5 +1,6 @@
-import 'package:app_example/data/models/video_model.dart';
 import 'package:equatable/equatable.dart';
+
+import 'video_model.dart';
 
 // ignore: must_be_immutable
 class VideoResultModel extends Equatable {

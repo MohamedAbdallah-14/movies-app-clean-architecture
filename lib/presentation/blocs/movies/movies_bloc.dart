@@ -1,10 +1,10 @@
-import 'package:app_example/domain/entitites.dart/movie_entity.dart';
-import 'package:app_example/domain/usecases/get_popular_movie_by_genre_usecase.dart';
-import 'package:app_example/domain/usecases/get_now_playing_movies_usecase.dart';
-import 'package:app_example/domain/usecases/get_popular_movies_usecase.dart';
-import 'package:app_example/domain/usecases/get_top_rated_movies_usecase.dart';
-import 'package:app_example/domain/usecases/get_trending_movies_usecase.dart';
-import 'package:app_example/domain/usecases/get_upcoming_movies_usecase.dart';
+import '../../../domain/entitites.dart/movie_entity.dart';
+import '../../../domain/usecases/get_popular_movie_by_genre_usecase.dart';
+import '../../../domain/usecases/get_now_playing_movies_usecase.dart';
+import '../../../domain/usecases/get_popular_movies_usecase.dart';
+import '../../../domain/usecases/get_top_rated_movies_usecase.dart';
+import '../../../domain/usecases/get_trending_movies_usecase.dart';
+import '../../../domain/usecases/get_upcoming_movies_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 

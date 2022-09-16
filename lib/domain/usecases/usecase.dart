@@ -1,4 +1,4 @@
-import 'package:app_example/core/errors/failure.dart';
+import '../../core/errors/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
@@ -15,6 +15,9 @@ abstract class MovieDetailUseCase<Output, Input> {
 
 abstract class PopularMovieByGenreUseCase<Output, Input> {
   Future<Either<Failure, List<Output>>> call(int param, int params);
+}
+abstract class ProfileImagesUseCase<Output, Input> {
+  Future<Either<Failure, List<Output>>> call(Input params);
 }
 
 class NoParams extends Equatable {

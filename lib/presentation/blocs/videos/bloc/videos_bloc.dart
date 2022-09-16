@@ -1,7 +1,8 @@
-import 'package:app_example/domain/entitites.dart/video_entity.dart';
-import 'package:app_example/domain/usecases/get_videos_usecase.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
+import '../../../../domain/entitites.dart/video_entity.dart';
+import '../../../../domain/usecases/get_videos_usecase.dart';
 
 part 'videos_event.dart';
 part 'videos_state.dart';

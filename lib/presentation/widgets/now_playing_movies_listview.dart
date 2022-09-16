@@ -1,12 +1,12 @@
-import 'package:app_example/domain/entitites.dart/movie_entity.dart';
-import 'package:app_example/presentation/blocs/cubit/animation/animation_cubit.dart';
-import 'package:app_example/presentation/blocs/movies/movies_bloc.dart';
-import 'package:app_example/presentation/widgets/movie_card_widget.dart';
+import '../../domain/entitites.dart/movie_entity.dart';
+import '../blocs/cubit/animation/animation_cubit.dart';
+import '../blocs/movies/movies_bloc.dart';
+import 'movie_card_widget.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:app_example/core/utils/string_extension_greater_20.dart';
+import '../../core/utils/string_extension_greater_20.dart';
 
 class NowPlayingMoviesScreen extends StatefulWidget {
   const NowPlayingMoviesScreen({Key? key}) : super(key: key);
@@ -60,7 +60,7 @@ class _HomePageState extends State<NowPlayingMoviesScreen> {
             return Stack(
               children: [
                 ListView.builder(
-                  //shrinkWrap: true,
+                  shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   controller: _scrollController,
                   itemCount: _listMovies.length,
@@ -68,21 +68,19 @@ class _HomePageState extends State<NowPlayingMoviesScreen> {
                     return Stack(
                       children: [
                         Positioned(
-                          bottom: 10,
+                          bottom: 20,
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 700),
-                            width: 200,
-                            height: 40,
+                            width: MediaQuery.of(context).size.width / 3.1,
+                            height: MediaQuery.of(context).size.height / 25,
                             //color: Colors.red,
-                            child: Center(
-                              child: Text(
-                                _listMovies[index].title.wordTrim20(),
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  overflow: TextOverflow.visible,
-                                ),
+                            child: Text(
+                              _listMovies[index].title.wordTrim20(),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                overflow: TextOverflow.visible,
                               ),
                             ),
                           ),

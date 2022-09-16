@@ -1,9 +1,10 @@
-import 'package:app_example/core/utils/api_utils.dart';
-import 'package:app_example/presentation/widgets/movie_detail/movie_detail_arguments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:intl/intl.dart';
+
+import '../../../core/utils/api_utils.dart';
+import '../movie_detail/movie_detail_arguments.dart';
 
 class MovieTabCardWidget extends StatelessWidget {
   final int movieId;
@@ -56,8 +57,8 @@ class MovieTabCardWidget extends StatelessWidget {
                     bottomRight: Radius.circular(11),
                     topRight: Radius.circular(11)),
                 child: Container(
-                  height: 150,
-                  width: 240,
+                  height: MediaQuery.of(context).size.height / 6,
+                  width: MediaQuery.of(context).size.width / 1.79,
                   color: const Color(0xFF1C1C1F),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

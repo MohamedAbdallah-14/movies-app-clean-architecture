@@ -16,24 +16,24 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: SearchBar(),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
           child: Column(
             key: const Key('column-test-key'),
             children: [
-              const SizedBox(
-                height: 200,
-                //width: 100,
-                child: NowPlayingMoviesScreen(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 3.1,
+                // width: 200,
+                child: const NowPlayingMoviesScreen(),
               ),
               Container(
                 //color: Colors.amber,
-                height: 480,
+                height: MediaQuery.of(context).size.height / 1.6,
                 child: const TabGenresWidget(),
               ),
               Container(
-                height: 720,
+                height: MediaQuery.of(context).size.height,
                 //color: Colors.deepPurpleAccent,
                 child: const TabBarMovies(),
               ),

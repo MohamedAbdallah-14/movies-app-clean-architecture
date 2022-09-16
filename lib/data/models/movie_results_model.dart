@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:app_example/domain/entitites.dart/movie_entity.dart';
+import '../../domain/entitites.dart/movie_entity.dart';
 
 import 'movie_model.dart';
 
